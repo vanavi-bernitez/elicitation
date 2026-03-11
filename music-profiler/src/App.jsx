@@ -4,51 +4,42 @@ const QUESTIONS = [
   {
     id: 1,
     question:
-      "It's 2am. You can't sleep. What's the one album you reach for — and why that one?",
-    placeholder:
-      "Maybe it's the quiet comfort of it, or the way it matches the hour...",
+      "Why do you think some people are so devoted to listening to albums front-to-back — not skipping a single track? What do you think they're getting out of it?",
   },
   {
     id: 2,
     question:
-      "Think of a song that completely wrecked you emotionally. What was it about the moment — the production, the lyric, the silence before a note?",
-    placeholder: "The specific detail matters more than the song title...",
+      "We all have that one genre we'd never admit to liking — but there's always that one song that broke through anyway. What's yours, and what made it impossible to ignore?",
   },
   {
     id: 3,
     question:
-      "If a friend plays something at a gathering and you immediately think 'yes, they get it' — what does that music sound like?",
-    placeholder: "Describe the texture, tempo, mood — not just genre...",
+      "You're hosting a get-together, and everyone in the room has completely different taste. Walk me through how you'd handle the music — what's your move?",
   },
   {
     id: 4,
     question:
-      "Is there a beloved, critically acclaimed album you've genuinely tried to love but just... can't? What's missing for you?",
-    placeholder: "Be honest — this reveals more than the music you do like...",
+      "If you had to describe your childhood purely through sound — what was playing in the background? What were the songs, artists, or sounds that just lived in your house?",
   },
   {
     id: 5,
     question:
-      "When a song has great lyrics but the production feels wrong to you, can you still love it? Or does the sonic world have to be right first?",
-    placeholder: "Think of an actual example if one comes to mind...",
+      "Is there a musician or artist whose taste you trust so completely that you'd follow any recommendation they made — no preview needed? What did they do to earn that?",
   },
   {
     id: 6,
     question:
-      "What's a genre or scene you don't usually listen to, but one artist or album from it pulled you in? What made it the exception?",
-    placeholder: "The exception often reveals the real rule...",
+      "Is there a critically acclaimed album that everyone seems to love, and you've genuinely tried — but it just doesn't land for you? What do you think is missing?",
   },
   {
     id: 7,
     question:
-      "Do you tend to listen to albums as complete works, or do you hunt for individual songs? And does that feel like a choice or just how you're wired?",
-    placeholder: "Neither is better — just honest...",
+      "Think of a song that is completely inseparable from a specific moment or period of your life. Not necessarily your favorite — just one that belongs to a time. What's the song, and what does it take you back to?",
   },
   {
     id: 8,
     question:
-      "Name a musician whose taste you trust completely — someone where you'd listen to anything they recommend without needing to know more. What earned that trust?",
-    placeholder: "What quality in their work made you hand over that trust?",
+      "How does new music usually find you — do you go looking for it, or does it tend to arrive on its own? And when something new actually sticks, what usually made it happen?",
   },
 ];
 
@@ -173,7 +164,6 @@ function QuestionCard({
           to { opacity: 1; transform: translateY(0); }
         }
         textarea:focus { outline: none; }
-        textarea::placeholder { color: #5c3d1e; }
       `}</style>
 
       <div
@@ -207,7 +197,6 @@ function QuestionCard({
         ref={textRef}
         value={answer}
         onChange={(e) => onChange(e.target.value)}
-        placeholder={question.placeholder}
         rows={5}
         style={{
           width: "100%",
@@ -488,7 +477,30 @@ export default function App() {
               content: `Here are my answers to 8 music questions:\n\n${qa}\n\nPlease write my taste profile.`,
             },
           ],
-          `You are a music critic and psychologist of listening. Based on someone's answers to 8 deep questions about their music taste, write a 3-4 sentence "taste profile" — a portrait of what they truly value in music. Don't just list genres or artists. Identify the underlying values: what they seek emotionally, what production qualities matter, how they relate to albums vs songs, what they can't tolerate, and what earns their trust. Write it in second person ("You are someone who..."). Be precise and honest. This should feel like a friend who really listened.`,
+          `You are a music psychologist, cultural anthropologist, and veteran music critic with 30 years of experience profiling listeners. You have deep knowledge across all genres — from hyper-specific microgenres to mainstream pop — and understand the psychological, sociological, and neurological dimensions of musical preference.
+
+          Your task: analyze someone's answers to 8 carefully designed questions and construct a precise, layered music taste profile. These questions were engineered to bypass surface-level genre preference and reveal deeper truths about how someone RELATES to music.
+
+          Each question targets a specific psychological dimension:
+          - Q1 (album vs. tracks) → reveals relationship with context, patience, and artistic intentionality
+          - Q2 (guilty pleasure) → reveals the gap between identity and instinct — what they suppress vs. what moves them
+          - Q3 (social listening) → reveals dominance vs. adaptability, and how music functions socially for them
+          - Q4 (childhood sounds) → reveals foundational sonic imprinting and emotional baseline
+          - Q5 (trusted artist) → reveals what values they outsource — innovation, curation, authenticity, taste-signaling
+          - Q6 (album they can't love) → reveals aesthetic dealbreakers, what actively repels them
+          - Q7 (memory-linked song) → reveals the emotional function music plays in their life (escapism, anchoring, nostalgia)
+          - Q8 (discovery behavior) → reveals openness, passivity vs. agency, and how they build their musical identity
+
+          When writing the profile:
+          1. IDENTIFY the 2-3 core underlying values (e.g., "emotional honesty over technical perfection", "music as social ritual", "sound as memory archive")
+          2. DIAGNOSE their listener archetype (e.g., Devoted Contextualist, Instinct-Led Eclectic, Nostalgic Purist, Social Chameleon, Reluctant Explorer)
+          3. SURFACE the tension or contradiction in their taste — the gap between who they think they are musically and what their answers actually reveal
+          4. PREDICT what they likely love that they haven't mentioned, and what would immediately turn them off
+
+          Output format — write in second person ("You are someone who..."), 4-5 sentences, no bullet points, no highlighted text ("**emotional texture rather than...**"). 
+          Be precise, psychologically sharp. 
+          Sound like a brilliant friend who listened between the lines — not a Spotify algorithm.
+          Never list genres as the core of the profile. Genres are symptoms; values are the diagnosis.`,
         );
         setProfile(result);
         setPhase("profile");
